@@ -1,4 +1,4 @@
-// LOOPS(for,while dp-while)
+// LOOPS(for,while do-while)
 // FOR LOOP
 
 // for(initializer; condition; increment){line code}
