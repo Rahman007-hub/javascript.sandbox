@@ -27,7 +27,7 @@ console.log(typeof myNum);
 const convertedStr = String(myNum);
 console.log(typeof convertedStr);
 // TYPE COERCION
-const a = "hello";
+const a = " hello";
 const b = 7;
 console.log(a - b);
 console.log(a + b);
