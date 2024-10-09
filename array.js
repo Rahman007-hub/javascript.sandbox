@@ -187,5 +187,5 @@ console.log(theIndexIs);
 
 
  
-
+// localCompare - compares string together
 
