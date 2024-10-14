@@ -1,57 +1,110 @@
-// write a function that take in a strings and convert the first letter of everyword to upperCase
-const firstLetter = (str) => {
-    const result = str.split(" ").map((word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    })
-    return result.join(" ");
-};
-console.log(firstLetter("testing is fun and stressful"));
+// // DOM - Document object model
 
-// write a function that check if the parameter is a number or not
-const checkNumber = (arg) => typeof arg === "number";
-console.log(checkNumber(80));
+// // get element by ID
+// const text = document.getElementById("text")
+// console.log(text);
 
-const currencytData = [
-  { from: "GBP", to: "NGN", rate: 2200 },
-  { from: "USD", to: "NGN", rate: 1700 },
-  { from: "EUR", to: "NGN", rate: 1900 },
-  { from: "YEN", to: "NGN", rate: 400 },
-];
+// // get element by class name
+// const message = document.getElementsByClassName("message")
+// console.log(message);
 
-// iterate over the currencyData and log a message the exchange rate for USD to NGN is 1700
-// write a func that returns the exchange rate for that currency pair
-//or an appropriate message if the pair is not found
-const findCurrencyPair = (baseCurrency, toCurrency) => {
-  //search through the currencyData to find a match
-  const pair = currencytData.find((currency) => {
-    return currency.from === baseCurrency && currency.to === toCurrency;
-  });
+// // querySelector, querySelectorAll - uses CSS selector . #
+// const paragraph = document.querySelector("p");
+// console.log(paragraph);
 
-  if (pair) {
-    console.log(
-      `The Exchange Rate for ${pair.from} to ${pair.to} is ${pair.rate}`
-    );
-  } else {
-    console.log("The currency pair cannot be found");
-  }
-};
-findCurrencyPair("YEN", "NGN");
+// const paragraphs = document.querySelectorAll("p")
+// console.log(paragraphs);
 
-const convertCurrency = (baseCurrency, toCurrency, amount) => {
-      const pair = currencytData.find((currency) => {
-        return currency.from === baseCurrency && currency.to === toCurrency;
-      });
-    if (pair) {
-        console.log(`${amount} ${pair.from} is equaivalent to ${amount*pair.rate} ${pair.to}`);
+// const heading6 = document.querySelector("div h6")
+// console.log(heading6);
+
+// // textContent, innerText, innerHtml
+
+// const heading = document.querySelector("h1")
+// // console.log(heading.textContent);
+// // heading.textContent += " JS IS FUN"
+// console.log(heading.innerText);
+// heading.innerText = " JS is good"
+
+// const div = document.querySelector("div")
+// console.log(div.innerHTML);
+// div.innerHTML +=  `<p>okay</p> `
+
+// const name = "John"
+// div.innerHTML = `<h1> welcome ${name}</h1>`
+
+// const beginPara = document.querySelector(".begin")
+// console.log(beginPara);
+// beginPara.className = "okay"
+// beginPara.id = "good";
+// beginPara.style.color = "gold"
+// beginPara.style.backgroundColor = "black"
+
+// // interact with CSS classnames
+// const h1 = document.querySelector("h1")
+// h1.className = "success"
+
+// // classList - add or remove
+// const msg = document.querySelector("h2.message")
+// // console.log(msg.classList);
+// msg.classList.add("error")
+// msg.classList.remove("example")
+// console.log(msg.classList.contains("good"));
+
+// console.log(msg);
+
+// const section = document.createElement("section")
+// section.innerHTML = "<h1> Created from JS </h1>"
+
+// // append
+// const body = document.querySelector("body")
+// body.appendChild(section)
+
+// // remove elment removeChild
+// // body.removeChild(section)
+
+
+// // replace child
+// const link = document.createElement("a")
+// link.innerText = "Visit Google";
+// // link.href = "htts://google.com";
+// link.setAttribute("href", "https://google.com")
+// body.replaceChild(link,section)
+
+// // responding to user interractionds
+// // event(click), event handler
+// // addEventListener - handle
+// const btn = document.querySelector("button");
+
+// btn.addEventListener("click", () => {
+//     console.log("button clicked");
+//     body.style.backgroundColor = "aqua"
+// })
+
+// form handling
+const form = document.querySelector("form")
+// submit event
+form.addEventListener("submit", (event) => {
+    // default of forms when submitted is to refresh the page
+    event.preventDefault();
+    // select those inputfield
+    const username = document.querySelector(".username")
+    const password = document.querySelector(".password");
+
+    const usernameValue = username.value.trim();
+    const passwordValue = password.value;
+    const small = document.querySelector("small")
+    // console.log(usernameValue, passwordValue);
+    
+    // validate()
+    if (!usernameValue || !passwordValue) {
+        // display error message
+        small.textContent = 'please fill all fields'
+    } else if (username.length < 5) {
+        small.textContent = "minimum user length is 5";
+    } else if (passwordValue.toLowerCase().includes("password")) {
+        small.innerText ="pasword must not include password"
     } else {
-        console.log("Currency pair not found");
+        small.textContent = "Form Submitted"
     }
-}
-
-convertCurrency("USD", "NGN", 500)
-
-const addingMoreRate = (from, to, rate) => {
-    currencytData.push({ from, to, rate })
-        console.log(currencytData);
-}
-addingMoreRate("AUS","NGN",1040)
+})
